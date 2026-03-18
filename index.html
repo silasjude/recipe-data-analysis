@@ -7,7 +7,26 @@
 </head>
 <body>
   <h3>Introduction</h3>
+  <p>This project uses a dataset from food.com, accessed 
+    <a href="https://drive.google.com/drive/folders/15965zA-g3QbfFqEIzLzk5ICPn4yGzHmr">here</a>. 
+    The raw data is in two dataframes, although the relevant variables to this project will be 
+
+  </p>
   <h3>Data Cleaning and Exploratory Data Analysis</h3>
+  <p>To clean the data, I began by converting the ratings data into an "average rating" column 
+    in the other dataframe. I then processed the descriptions by converting them to lowercase, 
+    removing punctuation, and standardizing whitespace in order to make tokenization easier in future steps. 
+    I also converted the tags into a proper list of strings, and removed the 'preparation', 
+    'time-to-make', and 'course' tags as they were effectively meaningless and found on almost every recipe. 
+    I also added 'word count' and 'tag count' columns, and dropped rows with missing descriptions or tags 
+    as those are the two columns I will be predicting primarily based off of.
+  </p>
+  <iframe
+    src="assets/recipes_head.html"
+    width="100%"
+    height="600"
+    frameborder="0"
+  ></iframe>
   <h3>Assessment of Missingness</h3>
   <h3>Hypothesis Testing</h3>
   <h3>Framing a Prediction Problem</h3>
