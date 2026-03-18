@@ -10,12 +10,6 @@ title: Recipe Data Analysis
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Recipe Data Analysis</title>
   <style>
-  .wrapper {
-      max-width: 100% !important;
-      width: 100% !important;
-  }
-  </style>
-  <style>
   td {
       max-width: 300px;
       white-space: nowrap;
@@ -44,7 +38,7 @@ title: Recipe Data Analysis
     I also added 'word count' and 'tag count' columns, and dropped rows with missing descriptions or tags 
     as those are the two columns I will be predicting primarily based off of.
   </p>
-  <div id="table-container"></div>
+  <div id="table-container" style="overflow-x: auto;"></div>
   <script>
   fetch("assets/recipes_head.html")
     .then(res => res.text())
