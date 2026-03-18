@@ -43,20 +43,20 @@
   <iframe
     src="assets/common_tag_graph.html"
     width="800"
-    height="400"
+    height="450"
     frameborder="0"
   ></iframe>
   <p>I also created histograms for the distributions of word and tag counts among recipes.</p>
   <iframe
     src="assets/word_count_graph.html"
     width="800"
-    height="400"
+    height="450"
     frameborder="0"
   ></iframe>
   <iframe
     src="assets/tag_count_graph.html"
     width="800"
-    height="400"
+    height="450"
     frameborder="0"
   ></iframe>
   <p>Finally, a heatmap which compares the correlation (or lack thereof) between word count 
@@ -64,9 +64,22 @@
   <iframe
     src="assets/heatmap.html"
     width="800"
-    height="400"
+    height="450"
     frameborder="0"
   ></iframe>
+  <p>I also created a pivot table indexed by tag containing the number of occurences of that tag, 
+    the mean and median number of words in the description of associated recipes, and the mean 
+    number of tags in recipes associated with that tag, sorted by frequency of the tag. These are 
+    the 10 most common tags.
+  </p>
+  <div id="table-container"></div>
+  <script>
+  fetch("assets/tag_stats_table.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("table-container").innerHTML = data;
+    });
+  </script>
 
   <h3>Assessment of Missingness</h3>
   <h3>Hypothesis Testing</h3>
