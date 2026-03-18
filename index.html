@@ -59,6 +59,13 @@
     height="450"
     frameborder="0"
   ></iframe>
+  <p>This is a graph displaying the co-occurrence of the most commot tags.</p>
+  <iframe
+    src="assets/co-occurrence.html"
+    width="800"
+    height="450"
+    frameborder="0"
+  ></iframe>
   <p>Finally, a heatmap which compares the correlation (or lack thereof) between word count 
     in the description and number of tags.</p>
   <iframe
@@ -82,6 +89,28 @@
   </script>
 
   <h3>Assessment of Missingness</h3>
+  <p>My next step was analyzing missingness, to determing if any of the data were MNAR;
+    that is, if missingness in any column is dependent on the data of another column. I performed 
+    a permutation test to determine if an empty 'average rating' column (i.e. a recipe having no 
+    ratings) is dependent on the year the recipe was posted. I was able to conclude that it 
+    almost certainly is, as my test returned a p value of 0. The following is a graph of the 
+    distribution of the year a recipe was posted, based on whether the ratings column is missing or not.
+  </p>
+  <iframe
+    src="assets/review_status_graph.html"
+    width="800"
+    height="450"
+    frameborder="0"
+  ></iframe>
+  <p>I also tested whether the presence of ratings is dependent on the number of tags on the 
+    recipe, but due to a p value of .239 I was not able to conclude that it is.
+  </p>
+    <iframe
+    src="assets/tag_null_dist.html"
+    width="800"
+    height="450"
+    frameborder="0"
+  ></iframe>
   <h3>Hypothesis Testing</h3>
   <h3>Framing a Prediction Problem</h3>
   <h3>Baseline Model</h3>
