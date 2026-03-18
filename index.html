@@ -105,16 +105,59 @@
   <p>I also tested whether the presence of ratings is dependent on the number of tags on the 
     recipe, but due to a p value of .239 I was not able to conclude that it is.
   </p>
-    <iframe
+  <iframe
     src="assets/tag_null_dist.html"
     width="800"
     height="450"
     frameborder="0"
   ></iframe>
   <h3>Hypothesis Testing</h3>
+  <p>The final stage of analysis was to test a hypothesis: that the time taken to complete 
+    a recipe is positively correlated with the number of steps. My null hypothesis, therefore, 
+    was that the number of steps in a recipe and the time taken to complete it are independent. 
+    I calculated the observed correlation coefficient to be ~0.014567, and upon testing found 
+    the p value of this correlation to be ~2.44%. This is a fairly small p value, so I decided 
+    to reject the null hypothesis and conclude that there likely is a slight positive correlation.
+  </p>
+  <iframe
+    src="assets/correlation_null_dist.html"
+    width="800"
+    height="450"
+    frameborder="0"
+  ></iframe>
   <h3>Framing a Prediction Problem</h3>
+  <p>The next portion of my project was to create a classifier for the tags on a recipe. 
+    This requires multiclass classification, for which I used a OneVsRestClassifier with Logistic Regression,
+    in order to predict a list of tags for each recipe. I chose to evaluate with a micro F1 
+    score, a commonly used multiclass classification metric that responds well to common 
+    classes, which because of the distribution of tags is useful for this project.
+  </p>
   <h3>Baseline Model</h3>
+  <p>My first model simply used the text-based description column (nominal) together with the 
+    number of minutes each recipe was estimated to take (quantitative). I used a MultiLabelBinarizer
+    to encode the response variable (tags), after removing tags with fewer than 50 occurences, 
+    in order to simplify the model and remove unnecessary tags that would not be used anyways. 
+    I then fed the descriptions through a TF-IDF Vectorizer, and Standard Scaling for the minutes 
+    column. This initial classifier had a score of 0.37674 on my test set, or 0.44134 on the 
+    total dataset, which indicates that it works but is not particularly strong.
+  </p>
   <h3>Final Model</h3>
+  <p>I then went on to update the model in a few ways. Firstly, I added columns for the number 
+    of steps and number of ingredients used in the recipes, in the hope that certain types of 
+    recipes are almost universally more or less complex than others, and I could therefore use 
+    this additional information to improve my model's F1 score. I also slightly changed some 
+    hyperparameters, most significantly increasing the maximum number of text features included 
+    from 1000 to 5000, by using a GridSearchCV to determine that this would increase my score. 
+    This model achieved an F1 score of 0.41794 on the unseen test data, or 0.62828 on the total 
+    dataset, still not incredibly accurate but definitely a significant improvement.
+  </p>
   <h3>Fairness Analysis</h3>
+  <p>Finally, I performed a fairness test to determine if the accuracy of my model would 
+    be dependent on whether the recipe is highly rated or not. I divided the data into 
+    portions with average rating above or below 4.8, and measured the precision on each portion. 
+    The average difference was only 0.00095, however, with a p value of ~0.699, which is 
+    high enough that there is no evidence for an accuracy difference between highly rated recipes 
+    and non-highly rated ones.
+  </p>
 </body>
 </html>
